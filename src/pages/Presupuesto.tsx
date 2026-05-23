@@ -7,6 +7,7 @@ const fmt = (n: number) =>
 export default function Presupuesto() {
   const [selectedKey, setSelectedKey] = useState('solarium')
   const [qty, setQty] = useState(1)
+  const [qtyInput, setQtyInput] = useState('1')
   const [checkedServices, setCheckedServices] = useState<Record<string, boolean>>({})
   const [cashDiscount, setCashDiscount] = useState(false)
   const [name, setName] = useState('')
@@ -83,10 +84,20 @@ export default function Presupuesto() {
                 <label>Unidades</label>
                 <input
                   type="number"
-                  value={qty}
+                  value={qtyInput}
                   min={1}
                   step={1}
-                  onChange={e => setQty(Math.max(1, parseInt(e.target.value) || 1))}
+                  onChange={e => {
+                    setQtyInput(e.target.value)
+                    const parsed = parseInt(e.target.value)
+                    if (!isNaN(parsed) && parsed >= 1) setQty(parsed)
+                  }}
+                  onBlur={() => {
+                    const parsed = parseInt(qtyInput)
+                    const safe = isNaN(parsed) || parsed < 1 ? 1 : parsed
+                    setQtyInput(String(safe))
+                    setQty(safe)
+                  }}
                 />
               </div>
             </div>
