@@ -1728,6 +1728,14 @@ footer .links a:hover { color: var(--orange); }
 .nav-links-cta-mobile { display: none; }
 
 /* =============================================
+   RESPONSIVE — 1200px (laptop)
+   ============================================= */
+@media (max-width: 1366px) {
+  .hero-image-overlay { padding: 16px 20px; }
+  .iso-badge { font-size: 9px; padding: 4px 10px; letter-spacing: 0.12em; }
+}
+
+/* =============================================
    RESPONSIVE — 768px
    ============================================= */
 @media (max-width: 768px) {
