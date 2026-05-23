@@ -76,15 +76,15 @@ export default function Home() {
         </div>
         <div className="stat-item">
           <div className="stat-number">{statValues[1]}<em>+</em></div>
-          <div className="stat-label">Modelos disponibles</div>
+          <div className="stat-label">Modelos disponibles en losetas atermicas</div>
         </div>
         <div className="stat-item">
           <div className="stat-number">{statValues[2]}<em>+</em></div>
           <div className="stat-label">Proyectos instalados</div>
         </div>
         <div className="stat-item">
-          <div className="stat-number">{statValues[3]}<em> AÑOS</em></div>
-          <div className="stat-label">Garantía de durabilidad</div>
+          <div className="stat-number"><em>+</em>{statValues[3]}<em> AÑOS</em></div>
+          <div className="stat-label">NUESTRA EXPERIENCIA ASEGURA TU CALIDAD</div>
         </div>
       </div>
 

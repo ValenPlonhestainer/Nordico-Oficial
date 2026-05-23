@@ -1,9 +1,11 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const close = () => setIsOpen(false)
+  const { pathname } = useLocation()
+  const isPresupuesto = pathname === '/presupuesto'
 
   return (
     <nav>
@@ -30,14 +32,20 @@ export default function Header() {
             Presupuesto
           </NavLink>
         </li>
-        <li className="nav-links-cta-mobile">
-          <NavLink className="btn-primary" to="/presupuesto" onClick={close}>
-            PEDIR PRESUPUESTO
-          </NavLink>
-        </li>
+        {!isPresupuesto && (
+          <li className="nav-links-cta-mobile">
+            <NavLink className="btn-primary" to="/presupuesto" onClick={close}>
+              PEDIR PRESUPUESTO
+            </NavLink>
+          </li>
+        )}
       </ul>
 
-      <NavLink className="btn-primary nav-cta-desktop" to="/presupuesto">
+      <NavLink
+        className="btn-primary nav-cta-desktop"
+        to="/presupuesto"
+        style={isPresupuesto ? { visibility: 'hidden', pointerEvents: 'none' } : undefined}
+      >
         PEDIR PRESUPUESTO
       </NavLink>
 
