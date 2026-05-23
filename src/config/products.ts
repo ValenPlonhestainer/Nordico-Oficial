@@ -24,6 +24,6 @@ export const CATALOG_PRODUCTS: Product[] = [
 ]
 
 export const SERVICES: Service[] = [
-  { id: 'svc-install', label: 'Laca (5 Litros)',      price: 7000,  type: 'fixed', priceLabel: '+$7.000' },
+  { id: 'svc-install', label: 'Laca (5 Litros)',      price: 70000,  type: 'fixed', priceLabel: '+$70.000' },
   { id: 'svc-seal',    label: 'Cemento Blanco (5KG)', price: 12000, type: 'fixed', priceLabel: '+$12.000' },
 ]
