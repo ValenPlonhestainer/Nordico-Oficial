@@ -93,6 +93,7 @@ export default function Productos() {
               border: '1px solid rgba(255,255,255,0.05)',
               display: 'grid', gridTemplateColumns: '1fr 1fr',
               gap: '32px', padding: '10px', alignItems: 'center',
+              overflow: 'hidden',
             }}>
               <img
                 src="/img/Piletas 1.jpg"
