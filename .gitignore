@@ -9,3 +9,8 @@ yarn-debug.log*
 yarn-error.log*
 .DS_Store
 Thumbs.db
+
+# Claude Code
+.agents/
+.claude/
+skills-lock.json
