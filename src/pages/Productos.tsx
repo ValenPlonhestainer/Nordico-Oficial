@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CATALOG_PRODUCTS } from '../config/products'
 import Footer from '../components/Footer'
+import SectionDivider from '../components/SectionDivider'
 
 function CardSlider({ images, alt }: { images: string[]; alt: string }) {
   const [index, setIndex] = useState(0)
@@ -113,31 +114,20 @@ export default function Productos() {
         </div>
       </div>
 
-      {/* ── Encabezado catálogo ── */}
+      <SectionDivider />
+
+      {/* ── Catálogo 1: Losetas Atérmicas ── */}
       <div className="catalog-header" id="catalogo-grid">
         <div>
-          <div className="catalog-header-title">CATÁLOGO DE MODELOS</div>
+          <div className="section-eyebrow">// Losetas Atérmicas</div>
+          <div className="catalog-header-title">CATÁLOGO DE LOSETAS</div>
           <div className="catalog-header-sub">Modelos diseñados para resistir climas extremos</div>
         </div>
         <div className="view-toggle">
-          <button
-            className={`view-btn${isGrid ? ' active' : ''}`}
-            title="Grilla"
-            onClick={() => setIsGrid(true)}
-          >
-            ⊞
-          </button>
-          <button
-            className={`view-btn${!isGrid ? ' active' : ''}`}
-            title="Lista"
-            onClick={() => setIsGrid(false)}
-          >
-            ☰
-          </button>
+          <button className={`view-btn${isGrid ? ' active' : ''}`} title="Grilla" onClick={() => setIsGrid(true)}>⊞</button>
+          <button className={`view-btn${!isGrid ? ' active' : ''}`} title="Lista" onClick={() => setIsGrid(false)}>☰</button>
         </div>
       </div>
-
-      {/* ── Grilla ── */}
       <div className={`products-grid${isGrid ? '' : ' list-view'}`}>
         {CATALOG_PRODUCTS.map(product => (
           <div className="product-card" key={product.key}>
@@ -153,6 +143,42 @@ export default function Productos() {
             </div>
           </div>
         ))}
+      </div>
+
+      <SectionDivider />
+
+      {/* ── Catálogo 2: Baldosas ── */}
+      <div className="catalog-header">
+        <div>
+          <div className="section-eyebrow">// Baldosas</div>
+          <div className="catalog-header-title">CATÁLOGO DE BALDOSAS</div>
+          <div className="catalog-header-sub">Nueva línea de productos</div>
+        </div>
+      </div>
+      <div className="catalog-coming-soon">
+        <div className="coming-soon-badge">En desarrollo</div>
+        <div className="coming-soon-title">PRÓXIMAMENTE</div>
+        <div className="coming-soon-text">
+          Estamos preparando nuestra línea de baldosas. Pronto vas a poder ver todos los modelos disponibles.
+        </div>
+      </div>
+
+      <SectionDivider />
+
+      {/* ── Catálogo 3: Revestimientos ── */}
+      <div className="catalog-header">
+        <div>
+          <div className="section-eyebrow">// Revestimientos</div>
+          <div className="catalog-header-title">CATÁLOGO DE REVESTIMIENTOS</div>
+          <div className="catalog-header-sub">Nueva línea de productos</div>
+        </div>
+      </div>
+      <div className="catalog-coming-soon">
+        <div className="coming-soon-badge">En desarrollo</div>
+        <div className="coming-soon-title">PRÓXIMAMENTE</div>
+        <div className="coming-soon-text">
+          Estamos preparando nuestra línea de revestimientos. Pronto vas a poder ver todos los modelos disponibles.
+        </div>
       </div>
 
       <Footer />

@@ -2,6 +2,22 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Footer from '../components/Footer'
 import { StaggerTestimonials } from '../components/ui/stagger-testimonials'
+import Masonry from '../components/ui/Masonry'
+import SectionDivider from '../components/SectionDivider'
+
+const GALLERY_ITEMS = [
+  { id: '1',  img: '/img/Pileta%20Cliente%201.JPG',  height: 600 },
+  { id: '2',  img: '/img/Pileta%20Cliente%202.JPG',  height: 800 },
+  { id: '3',  img: '/img/Pileta%20Cliente%203.JPG',  height: 700 },
+  { id: '4',  img: '/img/Pileta%20Cliente%204.JPG',  height: 500 },
+  { id: '5',  img: '/img/Pileta%20Cliente%205.JPG',  height: 900 },
+  { id: '6',  img: '/img/Pileta%20Cliente%206.JPG',  height: 600 },
+  { id: '7',  img: '/img/Pileta%20Cliente%207.JPG',  height: 750 },
+  { id: '8',  img: '/img/Pileta%20Cliente%208.JPG',  height: 650 },
+  { id: '9',  img: '/img/Pileta%20Cliente%209.JPG',  height: 800 },
+  { id: '10', img: '/img/Pileta%20Cliente%2010.jpg', height: 550 },
+  { id: '11', img: '/img/Pileta%20Cliente%2011.JPG', height: 700 },
+]
 
 function easeOutCubic(t: number) { return 1 - Math.pow(1 - t, 3) }
 
@@ -9,6 +25,8 @@ export default function Home() {
   const statsRef = useRef<HTMLDivElement>(null)
   const [statsTriggered, setStatsTriggered] = useState(false)
   const [statValues, setStatValues] = useState([0, 0, 0, 0])
+  const [galleryIdx, setGalleryIdx] = useState(0)
+  const galleryHoverRef = useRef(false)
 
   // Stats counter animation
   useEffect(() => {
@@ -26,7 +44,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!statsTriggered) return
-    const targets = [8, 6, 100, 6]
+    const targets = [20, 6, 100, 6]
     const duration = 1800
     let startTime: number | null = null
 
@@ -39,6 +57,14 @@ export default function Home() {
     }
     requestAnimationFrame(step)
   }, [statsTriggered])
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (!galleryHoverRef.current)
+        setGalleryIdx(i => (i + 1) % GALLERY_ITEMS.length)
+    }, 4000)
+    return () => clearInterval(timer)
+  }, [])
 
   return (
     <div id="home">
@@ -71,8 +97,8 @@ export default function Home() {
       {/* ── Stats ── */}
       <div className="home-stats" ref={statsRef}>
         <div className="stat-item">
-          <div className="stat-number">{statValues[0]}<em>°C</em></div>
-          <div className="stat-label">Más fresca que el asfalto</div>
+          <div className="stat-number"><em>+</em>{statValues[0]}<em>°C</em></div>
+          <div className="stat-label">Diferencias notorias de temperatura entre una loseta atermica Nordico y una convencional</div>
         </div>
         <div className="stat-item">
           <div className="stat-number">{statValues[1]}<em>+</em></div>
@@ -87,6 +113,8 @@ export default function Home() {
           <div className="stat-label">NUESTRA EXPERIENCIA ASEGURA TU CALIDAD</div>
         </div>
       </div>
+
+      <SectionDivider />
 
       {/* ── Features ── */}
       <div className="home-features">
@@ -115,6 +143,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <SectionDivider />
 
       {/* ── Productos destacados ── */}
       <div className="home-products">
@@ -167,6 +197,8 @@ export default function Home() {
 
       </div>
 
+      <SectionDivider />
+
       {/* ── Reviews ── */}
       <div className="home-reviews">
         <div className="home-reviews-header">
@@ -177,6 +209,70 @@ export default function Home() {
         </div>
         <StaggerTestimonials />
       </div>
+
+      <SectionDivider />
+
+      {/* ── Galería de clientes ── */}
+      <div className="home-gallery-section">
+        <div style={{ marginBottom: '40px' }}>
+          <div className="section-eyebrow">// Galería de trabajos</div>
+          <div className="section-title" style={{ marginBottom: 0 }}>
+            TRABAJOS <span style={{ color: 'var(--orange)' }}>REALIZADOS</span>
+          </div>
+        </div>
+        {/* Desktop: Masonry */}
+        <div className="home-gallery-masonry">
+          <Masonry
+            items={GALLERY_ITEMS}
+            ease="power3.out"
+            duration={0.6}
+            stagger={0.05}
+            animateFrom="bottom"
+            scaleOnHover={true}
+            hoverScale={0.97}
+            blurToFocus={true}
+            colorShiftOnHover={false}
+          />
+        </div>
+
+        {/* Mobile: Slider */}
+        <div
+          className="home-gallery-slider"
+          onMouseEnter={() => { galleryHoverRef.current = true }}
+          onMouseLeave={() => { galleryHoverRef.current = false }}
+        >
+          <div className="hg-slider-viewport">
+            <div
+              className="hg-slider-track"
+              style={{ transform: `translateX(-${galleryIdx * 100}%)` }}
+            >
+              {GALLERY_ITEMS.map((item, i) => (
+                <div key={i} className="hg-slide">
+                  <img src={item.img} alt={`Instalación cliente ${i + 1}`} />
+                </div>
+              ))}
+            </div>
+            <div className="hg-slider-overlay">
+              <div className="hg-counter">
+                <span>{String(galleryIdx + 1).padStart(2, '0')}</span>
+                {' / '}
+                {String(GALLERY_ITEMS.length).padStart(2, '0')}
+              </div>
+              <div className="hg-nav">
+                <button className="hg-nav-btn" onClick={() => setGalleryIdx(i => (i - 1 + GALLERY_ITEMS.length) % GALLERY_ITEMS.length)}>‹</button>
+                <button className="hg-nav-btn" onClick={() => setGalleryIdx(i => (i + 1) % GALLERY_ITEMS.length)}>›</button>
+              </div>
+            </div>
+          </div>
+          <div className="hg-dots">
+            {GALLERY_ITEMS.map((_, i) => (
+              <span key={i} className={i === galleryIdx ? 'active' : ''} onClick={() => setGalleryIdx(i)} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <SectionDivider />
 
       {/* ── CTA ── */}
       <div className="home-cta">
