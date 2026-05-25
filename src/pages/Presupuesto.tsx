@@ -36,6 +36,29 @@ export default function Presupuesto() {
       setTimeout(() => setShowToast(false), 3000)
       return
     }
+
+    const serviciosSeleccionados = SERVICES
+      .filter(svc => checkedServices[svc.id])
+      .map(svc => svc.label)
+      .join(', ') || 'Ninguno'
+
+    fetch('https://script.google.com/macros/s/AKfycbyk-4vejWOToT7EkLcHPgUFlv11aRBwWBM_eSQEe_3xG9hD8lHINI_09Ic6i14hM4k/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nombre: name,
+        email,
+        telefono: phone,
+        provincia: province,
+        producto: selectedProduct.name,
+        cantidad: qty,
+        servicios: serviciosSeleccionados,
+        efectivo: cashDiscount ? 'Sí' : 'No',
+        total: fmt(total),
+      }),
+    }).catch(() => {})
+
     const lines: string[] = []
     lines.push('🏗️ Hola! Me interesa este presupuesto')
     lines.push('*SOLICITUD DE PRESUPUESTO — NORDICO*')
