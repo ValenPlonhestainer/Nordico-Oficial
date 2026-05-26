@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CATALOG_PRODUCTS } from '../config/products'
+import { useProducts } from '../hooks/useProducts'
 import Footer from '../components/Footer'
 import SectionDivider from '../components/SectionDivider'
 
@@ -49,6 +49,8 @@ function CardSlider({ images, alt }: { images: string[]; alt: string }) {
 }
 
 export default function Productos() {
+  const products = useProducts()
+
   return (
     <div id="catalogo">
 
@@ -121,7 +123,7 @@ export default function Productos() {
         </div>
       </div>
       <div className="products-grid">
-        {CATALOG_PRODUCTS.map(product => (
+        {products.map(product => (
           <div className="product-card" key={product.key}>
             <div className="product-thumb">
               <CardSlider images={[product.image]} alt={product.name} />

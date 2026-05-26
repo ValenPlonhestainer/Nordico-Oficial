@@ -1,10 +1,12 @@
 import { useState } from 'react'
-import { CATALOG_PRODUCTS, SERVICES } from '../config/products'
+import { SERVICES } from '../config/products'
+import { useProducts } from '../hooks/useProducts'
 
 const fmt = (n: number) =>
   '$' + n.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
 
 export default function Presupuesto() {
+  const products = useProducts()
   const [selectedKey, setSelectedKey] = useState('solarium')
   const [qty, setQty] = useState(1)
   const [qtyInput, setQtyInput] = useState('1')
@@ -17,7 +19,7 @@ export default function Presupuesto() {
   const [showErrors, setShowErrors] = useState(false)
   const [showToast, setShowToast] = useState(false)
 
-  const selectedProduct = CATALOG_PRODUCTS.find(p => p.key === selectedKey) ?? CATALOG_PRODUCTS[0]
+  const selectedProduct = products.find(p => p.key === selectedKey) ?? products[0]
   const tileCost = qty * selectedProduct.priceUnit
 
   const servicesCost = SERVICES.reduce((acc, svc) => {
@@ -133,7 +135,7 @@ export default function Presupuesto() {
               <div className="form-section-title">ELEGÍ TU MODELO</div>
             </div>
             <div className="tile-options">
-              {CATALOG_PRODUCTS.map(product => (
+              {products.map(product => (
                 <div
                   key={product.key}
                   className={`tile-option${selectedKey === product.key ? ' selected' : ''}`}
