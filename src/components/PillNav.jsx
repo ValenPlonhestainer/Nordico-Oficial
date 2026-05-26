@@ -14,7 +14,7 @@ const PillNav = ({
   pillColor = '#120F17',
   hoveredPillTextColor = '#120F17',
   pillTextColor,
-  onMobileMenuClick,
+  onMobileMenuClick = undefined,
   initialLoadAnimation = true
 }) => {
   const resolvedPillTextColor = pillTextColor ?? baseColor;
