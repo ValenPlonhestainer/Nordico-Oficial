@@ -6,17 +6,17 @@ import Masonry from '../components/ui/Masonry'
 import SectionDivider from '../components/SectionDivider'
 
 const GALLERY_ITEMS = [
-  { id: '1',  img: '/img/Pileta%20Cliente%201.JPG',  height: 600 },
-  { id: '2',  img: '/img/Pileta%20Cliente%202.JPG',  height: 800 },
-  { id: '3',  img: '/img/Pileta%20Cliente%203.JPG',  height: 700 },
-  { id: '4',  img: '/img/Pileta%20Cliente%204.JPG',  height: 500 },
-  { id: '5',  img: '/img/Pileta%20Cliente%205.JPG',  height: 900 },
-  { id: '6',  img: '/img/Pileta%20Cliente%206.JPG',  height: 600 },
-  { id: '7',  img: '/img/Pileta%20Cliente%207.JPG',  height: 750 },
-  { id: '8',  img: '/img/Pileta%20Cliente%208.JPG',  height: 650 },
-  { id: '9',  img: '/img/Pileta%20Cliente%209.JPG',  height: 800 },
-  { id: '10', img: '/img/Pileta%20Cliente%2010.jpg', height: 550 },
-  { id: '11', img: '/img/Pileta%20Cliente%2011.JPG', height: 700 },
+  { id: '1',  img: '/img/Pileta%20Cliente%201.JPG',  height: 400 },
+  { id: '2',  img: '/img/Pileta%20Cliente%202.JPG',  height: 550 },
+  { id: '3',  img: '/img/Pileta%20Cliente%203.JPG',  height: 500 },
+  { id: '4',  img: '/img/Pileta%20Cliente%204.JPG',  height: 350 },
+  { id: '5',  img: '/img/Pileta%20Cliente%205.JPG',  height: 600 },
+  { id: '6',  img: '/img/Pileta%20Cliente%206.JPG',  height: 400 },
+  { id: '7',  img: '/img/Pileta%20Cliente%207.JPG',  height: 500 },
+  { id: '8',  img: '/img/Pileta%20Cliente%208.JPG',  height: 450 },
+  { id: '9',  img: '/img/Pileta%20Cliente%209.JPG',  height: 550 },
+  { id: '10', img: '/img/Pileta%20Cliente%2010.jpg', height: 400 },
+  { id: '11', img: '/img/Pileta%20Cliente%2011.JPG', height: 500 },
 ]
 
 function easeOutCubic(t: number) { return 1 - Math.pow(1 - t, 3) }
@@ -27,6 +27,7 @@ export default function Home() {
   const [statValues, setStatValues] = useState([0, 0, 0, 0])
   const [galleryIdx, setGalleryIdx] = useState(0)
   const galleryHoverRef = useRef(false)
+  const [lightboxImg, setLightboxImg] = useState<string | null>(null)
 
   // Stats counter animation
   useEffect(() => {
@@ -76,7 +77,7 @@ export default function Home() {
         <div className="home-hero-content">
           <div className="home-hero-tag fade-up">// Losetas Atérmicas</div>
           <h1 className="home-hero-title fade-up-2">
-            Tu Pileta<br />Nunca Tan<br /><span>Fresca.</span>
+            Tu Pileta<br />Nunca Tan<br /><span>Fresca</span>
           </h1>
           <p className="home-hero-body fade-up-3">
             Losetas atérmicas de alta calidad. Superficies más frescas,
@@ -232,6 +233,7 @@ export default function Home() {
             hoverScale={0.97}
             blurToFocus={true}
             colorShiftOnHover={false}
+            onItemClick={(item: { img: string }) => setLightboxImg(item.img)}
           />
         </div>
 
@@ -293,6 +295,23 @@ export default function Home() {
       </div>
 
       <Footer />
+
+      {lightboxImg && (
+        <div
+          className="lightbox-overlay"
+          onClick={() => setLightboxImg(null)}
+          onKeyDown={e => e.key === 'Escape' && setLightboxImg(null)}
+          tabIndex={-1}
+        >
+          <img
+            src={lightboxImg}
+            className="lightbox-img"
+            alt="Imagen ampliada"
+            onClick={e => e.stopPropagation()}
+          />
+          <button className="lightbox-close" onClick={() => setLightboxImg(null)} aria-label="Cerrar">✕</button>
+        </div>
+      )}
     </div>
   )
 }

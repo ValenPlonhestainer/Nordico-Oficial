@@ -49,6 +49,7 @@ const Masonry = ({
   hoverScale = 0.95,
   blurToFocus = true,
   colorShiftOnHover = false,
+  onItemClick,
 }) => {
   const columns = useMedia(
     ['(min-width:1500px)', '(min-width:1000px)', '(min-width:600px)', '(min-width:400px)'],
@@ -143,6 +144,8 @@ const Masonry = ({
           className="masonry-item"
           onMouseEnter={e => handleMouseEnter(e, item)}
           onMouseLeave={e => handleMouseLeave(e, item)}
+          onClick={() => onItemClick?.(item)}
+          style={{ cursor: onItemClick ? 'pointer' : 'default' }}
         >
           <div className="masonry-img" style={{ backgroundImage: `url(${item.img})` }}>
             {colorShiftOnHover && (

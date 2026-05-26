@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { CATALOG_PRODUCTS } from '../config/products'
 import Footer from '../components/Footer'
 import SectionDivider from '../components/SectionDivider'
@@ -50,15 +49,13 @@ function CardSlider({ images, alt }: { images: string[]; alt: string }) {
 }
 
 export default function Productos() {
-  const [isGrid, setIsGrid] = useState(true)
-
   return (
     <div id="catalogo">
 
       {/* ── Hero ── */}
       <div className="hero">
         <div className="hero-content">
-          <div className="hero-tag fade-up">SOLUCIONES TÉRMICAS</div>
+          <div className="hero-tag fade-up">// SOLUCIONES TÉRMICAS</div>
           <h1 className="hero-title fade-up-2">
             Colecciones<br />de Losetas<br /><span>Nordico</span>
           </h1>
@@ -66,8 +63,7 @@ export default function Productos() {
             Nuestra tecnología térmica asegura superficies siempre frescas, incluso bajo el sol más intenso.
           </p>
           <div className="hero-actions fade-up-4">
-            <Link className="btn-primary" to="/presupuesto">DESCARGAR CATÁLOGO</Link>
-            <a className="btn-outline" href="#catalogo-grid">VER MUESTRAS</a>
+            <a className="btn-primary" href="#catalogo-grid">VER MUESTRAS</a>
           </div>
         </div>
 
@@ -123,12 +119,8 @@ export default function Productos() {
           <div className="catalog-header-title">CATÁLOGO DE LOSETAS</div>
           <div className="catalog-header-sub">Modelos diseñados para resistir climas extremos</div>
         </div>
-        <div className="view-toggle">
-          <button className={`view-btn${isGrid ? ' active' : ''}`} title="Grilla" onClick={() => setIsGrid(true)}>⊞</button>
-          <button className={`view-btn${!isGrid ? ' active' : ''}`} title="Lista" onClick={() => setIsGrid(false)}>☰</button>
-        </div>
       </div>
-      <div className={`products-grid${isGrid ? '' : ' list-view'}`}>
+      <div className="products-grid">
         {CATALOG_PRODUCTS.map(product => (
           <div className="product-card" key={product.key}>
             <div className="product-thumb">
