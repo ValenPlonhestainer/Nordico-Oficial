@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import { SERVICES } from '../config/products'
 import { useProducts } from '../hooks/useProducts'
+import { useServices } from '../hooks/useServices'
 
 const fmt = (n: number) =>
   '$' + n.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
 
 export default function Presupuesto() {
   const products = useProducts()
+  const services = useServices()
   const [selectedKey, setSelectedKey] = useState('solarium')
   const [qty, setQty] = useState(1)
   const [qtyInput, setQtyInput] = useState('1')
@@ -22,7 +23,7 @@ export default function Presupuesto() {
   const selectedProduct = products.find(p => p.key === selectedKey) ?? products[0]
   const tileCost = qty * selectedProduct.priceUnit
 
-  const servicesCost = SERVICES.reduce((acc, svc) => {
+  const servicesCost = services.reduce((acc, svc) => {
     if (!checkedServices[svc.id]) return acc
     return acc + (svc.type === 'unit' ? qty * svc.price : svc.price)
   }, 0)
@@ -39,7 +40,7 @@ export default function Presupuesto() {
       return
     }
 
-    const serviciosSeleccionados = SERVICES
+    const serviciosSeleccionados = services
       .filter(svc => checkedServices[svc.id])
       .map(svc => svc.label)
       .join(', ') || 'Ninguno'
@@ -75,7 +76,7 @@ export default function Presupuesto() {
     lines.push(`Producto: ${selectedProduct.name}`)
     lines.push(`Cantidad: ${qty} ${qty === 1 ? 'unidad' : 'unidades'}`)
     lines.push(`Losetas: ${fmt(tileCost)}`)
-    SERVICES.forEach(svc => {
+    services.forEach(svc => {
       if (checkedServices[svc.id])
         lines.push(`${svc.label}: ${fmt(svc.type === 'unit' ? qty * svc.price : svc.price)}`)
     })
@@ -159,7 +160,7 @@ export default function Presupuesto() {
               <div className="form-section-title">SERVICIOS ADICIONALES</div>
             </div>
             <div className="form-services">
-              {SERVICES.map(svc => (
+              {services.map(svc => (
                 <label key={svc.id} className="service-label">
                   <input
                     type="checkbox"
@@ -278,7 +279,7 @@ export default function Presupuesto() {
             <span className="value">{fmt(tileCost)}</span>
           </div>
 
-          {SERVICES.map(svc => checkedServices[svc.id] && (
+          {services.map(svc => checkedServices[svc.id] && (
             <div key={svc.id} className="summary-row">
               <span className="label">{svc.label}</span>
               <span className="value">
