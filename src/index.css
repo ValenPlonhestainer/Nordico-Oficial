@@ -2111,6 +2111,8 @@ footer .links a:hover { color: var(--orange); }
   .stat-number { font-size: 38px; }
   .stat-item { padding: 24px 16px; }
   .products-grid { grid-template-columns: 1fr; margin: 0 16px 48px; }
+  [data-product-key="solarium"] .card-slider-track img { transform: scale(1.15); transform-origin: center center; }
+  [data-product-key="solarium"] .tile-option-thumb img { transform: scale(1.15); transform-origin: center center; }
   .showcase-stack { flex-direction: column; }
   .showcase-card { height: 160px; flex: unset; }
   .tile-options { grid-template-columns: 1fr 1fr; }

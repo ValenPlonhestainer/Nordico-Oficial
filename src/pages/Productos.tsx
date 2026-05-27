@@ -124,7 +124,7 @@ export default function Productos() {
       </div>
       <div className="products-grid">
         {products.map(product => (
-          <div className="product-card" key={product.key}>
+          <div className="product-card" key={product.key} data-product-key={product.key}>
             <div className="product-thumb">
               <CardSlider images={[product.image]} alt={product.name} />
             </div>

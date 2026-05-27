@@ -140,6 +140,7 @@ export default function Presupuesto() {
                 <div
                   key={product.key}
                   className={`tile-option${selectedKey === product.key ? ' selected' : ''}`}
+                  data-product-key={product.key}
                   onClick={() => setSelectedKey(product.key)}
                 >
                   <div className="check-mark">✓</div>

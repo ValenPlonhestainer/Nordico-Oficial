@@ -15,7 +15,7 @@ export interface Service {
 }
 
 export const CATALOG_PRODUCTS: Product[] = [
-  { key: 'solarium',    name: 'SOLARIUM',            priceUnit: 7900, image: '/img/Solarium.jpg',       tag: 'MÁS POPULAR' },
+  { key: 'solarium',    name: 'SOLARIUM',            priceUnit: 7900, image: '/img/Solarium Frente.png', tag: 'MÁS POPULAR' },
   { key: 'recto',       name: 'BORDE RECTO',         priceUnit: 9800, image: '/img/Borde recto.jpg' },
   { key: 'ballena5050', name: 'BORDE BALLENA 50X50', priceUnit: 9800, image: '/img/Borde ballena.jpg' },
   { key: 'ballena4050', name: 'BORDE BALLENA 40X50', priceUnit: 9000, image: '/img/Borde ballenita.jpg' },
