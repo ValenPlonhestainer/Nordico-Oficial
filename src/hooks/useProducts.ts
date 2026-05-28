@@ -15,13 +15,16 @@ export function useProducts() {
       .then(({ data, error }) => {
         if (error || !data || data.length === 0) return
         setProducts(
-          data.map(p => ({
-            key: p.key,
-            name: p.name,
-            priceUnit: p.price_unit,
-            images: CATALOG_PRODUCTS.find(c => c.key === p.key)?.images ?? [],
-            tag: p.tag ?? undefined,
-          }))
+          data.map(p => {
+            const local = CATALOG_PRODUCTS.find(c => c.key === p.key)
+            return {
+              key: p.key,
+              name: local?.name ?? p.name,
+              priceUnit: p.price_unit,
+              images: local?.images ?? [],
+              tag: p.tag ?? undefined,
+            }
+          })
         )
       })
   }, [])
