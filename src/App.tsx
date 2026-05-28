@@ -30,7 +30,7 @@ export default function App() {
         logoAlt="Nordico"
         items={NAV_ITEMS}
         activeHref={pathname}
-        baseColor="#E8521A"
+        baseColor="#C44010"
         pillColor="#141414"
         pillTextColor="#F5F4F0"
         hoveredPillTextColor="#F5F4F0"
