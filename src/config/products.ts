@@ -2,7 +2,7 @@ export interface Product {
   key: string
   name: string
   priceUnit: number
-  image: string
+  images: string[]
   tag?: string
 }
 
@@ -15,12 +15,12 @@ export interface Service {
 }
 
 export const CATALOG_PRODUCTS: Product[] = [
-  { key: 'solarium',    name: 'SOLARIUM',            priceUnit: 7900, image: '/img/Solarium Frente.png', tag: 'MÁS POPULAR' },
-  { key: 'recto',       name: 'BORDE RECTO',         priceUnit: 9800, image: '/img/Borde recto.jpg' },
-  { key: 'ballena5050', name: 'BORDE BALLENA 50X50', priceUnit: 9800, image: '/img/Borde ballena.jpg' },
-  { key: 'ballena4050', name: 'BORDE BALLENA 40X50', priceUnit: 9000, image: '/img/Borde ballenita.jpg' },
-  { key: 'esquina',     name: 'ESQUINA',             priceUnit: 10500, image: '/img/Esquina.jpg' },
-  { key: 'cuna',        name: 'BORDE ROMANO (CUÑA)', priceUnit: 6000, image: '/img/Cuña.jpg' },
+  { key: 'solarium',    name: 'SOLARIUM',            priceUnit: 7900, images: ['/img/Solarium Frente.png', '/img/Solarium Perfil.png'], tag: 'MÁS POPULAR' },
+  { key: 'recto',       name: 'BORDE L',             priceUnit: 9800, images: ['/img/Borde L Frente.png', '/img/Borde L Perfil.png'] },
+  { key: 'ballena5050', name: 'BORDE BALLENA 50X50', priceUnit: 9800, images: ['/img/Borde ballena.jpg'] },
+  { key: 'ballena4050', name: 'BORDE BALLENA 40X50', priceUnit: 9000, images: ['/img/Borde ballenita.jpg'] },
+  { key: 'esquina',     name: 'ESQUINA',             priceUnit: 10500, images: ['/img/Esquina.jpg'] },
+  { key: 'cuna',        name: 'BORDE ROMANO (CUÑA)', priceUnit: 6000, images: ['/img/Cuña.jpg'] },
 ]
 
 export const SERVICES: Service[] = [

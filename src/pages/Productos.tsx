@@ -126,7 +126,7 @@ export default function Productos() {
         {products.map(product => (
           <div className="product-card" key={product.key} data-product-key={product.key}>
             <div className="product-thumb">
-              <CardSlider images={[product.image]} alt={product.name} />
+              <CardSlider images={product.images} alt={product.name} />
             </div>
             <div className="product-info">
               <div className="product-name">{product.name}</div>

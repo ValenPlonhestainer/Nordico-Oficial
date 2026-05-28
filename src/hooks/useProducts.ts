@@ -19,7 +19,7 @@ export function useProducts() {
             key: p.key,
             name: p.name,
             priceUnit: p.price_unit,
-            image: CATALOG_PRODUCTS.find(c => c.key === p.key)?.image ?? '',
+            images: CATALOG_PRODUCTS.find(c => c.key === p.key)?.images ?? [],
             tag: p.tag ?? undefined,
           }))
         )

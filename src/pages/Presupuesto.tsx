@@ -145,7 +145,7 @@ export default function Presupuesto() {
                 >
                   <div className="check-mark">✓</div>
                   <div className="tile-option-thumb">
-                    <img src={product.image} alt={product.name} style={{ width: '100%', height: 'auto', display: 'block' }} />
+                    <img src={product.images[0]} alt={product.name} style={{ width: '100%', height: 'auto', display: 'block' }} />
                   </div>
                   <div className="tile-option-name">{product.name}</div>
                   <div className="tile-option-price">${product.priceUnit.toLocaleString('es-AR')} c/u</div>
