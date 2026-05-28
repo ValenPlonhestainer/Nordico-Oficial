@@ -48,6 +48,12 @@ function CardSlider({ images, alt }: { images: string[]; alt: string }) {
   )
 }
 
+function renderName(name: string) {
+  const match = name.match(/^(.*?)(\d+X\d+)$/)
+  if (!match) return <>{name}</>
+  return <>{match[1]}<span style={{ textDecoration: 'underline', textDecorationColor: 'var(--orange)', textUnderlineOffset: '3px' }}>{match[2]}</span></>
+}
+
 export default function Productos() {
   const products = useProducts()
 
@@ -129,7 +135,7 @@ export default function Productos() {
               <CardSlider images={product.images} alt={product.name} />
             </div>
             <div className="product-info">
-              <div className="product-name">{product.name}</div>
+              <div className="product-name">{renderName(product.name)}</div>
               <div className="product-meta">
                 <div className="product-price">${product.priceUnit.toLocaleString('es-AR')} <span>c/u</span></div>
                 {product.tag && <div className="tag-pill">{product.tag}</div>}

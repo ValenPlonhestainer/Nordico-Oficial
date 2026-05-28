@@ -85,7 +85,7 @@ export default function Presupuesto() {
     lines.push(`💰 *TOTAL: ${fmt(total)}*`)
 
     const text = encodeURIComponent(lines.join('\n'))
-    window.open(`https://wa.me/5492664160546?text=${text}`, '_blank')
+    window.open(`https://wa.me/5491163716566?text=${text}`, '_blank')
   }
 
   const toggleService = (id: string, checked: boolean) =>
