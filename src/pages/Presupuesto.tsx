@@ -22,7 +22,7 @@ export default function Presupuesto() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
-  const [province, setProvince] = useState('Buenos Aires')
+  const [province, setProvince] = useState('San Luis')
   const [showErrors, setShowErrors] = useState(false)
   const [showToast, setShowToast] = useState(false)
 

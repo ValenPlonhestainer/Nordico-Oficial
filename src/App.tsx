@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Productos from './pages/Productos'
 import Instalacion from './pages/Instalacion'
 import Presupuesto from './pages/Presupuesto'
+import Terminos from './pages/Terminos'
 
 const NAV_ITEMS = [
   { label: 'Inicio',      href: '/' },
@@ -43,6 +44,7 @@ export default function App() {
         <Route path="/productos" element={<Productos />} />
         <Route path="/instalacion" element={<Instalacion />} />
         <Route path="/presupuesto" element={<Presupuesto />} />
+        <Route path="/terminos" element={<Terminos />} />
       </Routes>
     </>
   )

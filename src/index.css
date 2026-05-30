@@ -1194,6 +1194,110 @@ nav {
 /* =============================================
    INSTALACIÓN — #instalacion
    ============================================= */
+/* =============================================
+   TÉRMINOS Y CONDICIONES — #terminos
+   ============================================= */
+#terminos { padding-top: 60px; }
+
+.terminos-hero {
+  padding: 80px 60px 60px;
+  border-bottom: 1px solid var(--border-line);
+}
+
+.terminos-title {
+  font-family: var(--font-display);
+  font-size: clamp(42px, 6vw, 80px);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--white);
+  margin: 12px 0 20px;
+  text-transform: uppercase;
+}
+
+.terminos-title span { color: var(--orange); }
+
+.terminos-subtitle {
+  font-size: 16px;
+  color: var(--gray);
+  max-width: 480px;
+}
+
+.terminos-body {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 60px 40px 80px;
+}
+
+.terminos-section {
+  margin-bottom: 48px;
+}
+
+.terminos-section-title {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-line);
+}
+
+.terminos-section p {
+  font-size: 15px;
+  color: var(--gray);
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.terminos-section ul {
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+
+.terminos-section ul li {
+  font-size: 15px;
+  color: var(--gray);
+  line-height: 1.8;
+  margin-bottom: 6px;
+}
+
+.terminos-intro {
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border-line);
+}
+
+.terminos-intro p {
+  font-size: 16px;
+  color: var(--gray);
+  line-height: 1.8;
+}
+
+.terminos-subsection {
+  margin-top: 24px;
+  padding-left: 16px;
+  border-left: 2px solid rgba(232,82,26,0.25);
+}
+
+.terminos-subsection-title {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+  opacity: 0.75;
+  margin-bottom: 10px;
+}
+
+.terminos-placeholder {
+  font-size: 15px;
+  color: var(--gray);
+  line-height: 1.8;
+}
+
 #instalacion { padding-top: 60px; }
 
 .install-hero {
