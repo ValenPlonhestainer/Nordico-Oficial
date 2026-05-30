@@ -2,6 +2,12 @@ import { useState } from 'react'
 import { useProducts } from '../hooks/useProducts'
 import { useServices } from '../hooks/useServices'
 
+function renderName(name: string) {
+  const match = name.match(/^(.*?)(\d+X\d+)$/)
+  if (!match) return <>{name}</>
+  return <>{match[1]}<span style={{ textDecoration: 'underline', textDecorationColor: 'var(--orange)', textUnderlineOffset: '3px' }}>{match[2]}</span></>
+}
+
 const fmt = (n: number) =>
   '$' + n.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
 
@@ -147,8 +153,8 @@ export default function Presupuesto() {
                   <div className="tile-option-thumb">
                     <img src={product.images[0]} alt={product.name} style={{ width: '100%', height: 'auto', display: 'block' }} />
                   </div>
-                  <div className="tile-option-name">{product.name}</div>
-                  <div className="tile-option-price">${product.priceUnit.toLocaleString('es-AR')} c/u</div>
+                  <div className="tile-option-name">{renderName(product.name)}</div>
+                  <div className="tile-option-price">${product.priceUnit.toLocaleString('es-AR')} <span>c/u</span></div>
                 </div>
               ))}
             </div>
