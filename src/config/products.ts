@@ -19,8 +19,8 @@ export const CATALOG_PRODUCTS: Product[] = [
   { key: 'recto',       name: 'BORDE L',             priceUnit: 9800, images: ['/img/Borde L Frente.png', '/img/Borde L Perfil.png'] },
   { key: 'ballena5050', name: 'BORDE BALLENA 50X50', priceUnit: 9800, images: ['/img/Ballena Frente.png', '/img/Ballena Perfil.png'] },
   { key: 'ballena4050', name: 'BORDE BALLENA 40X50', priceUnit: 9000, images: ['/img/Ballena Frente.png', '/img/Ballena Perfil.png'] },
-  { key: 'esquina',     name: 'ESQUINA',             priceUnit: 10500, images: ['/img/Esquina.jpg'] },
-  { key: 'cuna',        name: 'BORDE ROMANO (CUÑA)', priceUnit: 6000, images: ['/img/Cuña.jpg'] },
+  { key: 'esquina',     name: 'ESQUINA',             priceUnit: 10500, images: ['/img/Esquina Frente.png', '/img/Esquina Perfil.png'] },
+  { key: 'cuna',        name: 'BORDE ROMANO (CUÑA)', priceUnit: 6000, images: ['/img/Cuña Frente.png', '/img/Ballena Perfil.png'] },
 ]
 
 export const SERVICES: Service[] = [

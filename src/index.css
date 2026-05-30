@@ -1169,13 +1169,13 @@ nav {
 
 .product-price {
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 26px;
   font-weight: 700;
   color: var(--orange);
 }
 
 .product-price span {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--gray);
   font-family: var(--font-body);
   font-weight: 400;
@@ -2108,7 +2108,7 @@ footer .links a:hover { color: var(--orange); }
    RESPONSIVE — 480px (pantallas muy pequeñas)
    ============================================= */
 @media (max-width: 480px) {
-  .features-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr 1fr; }
   .home-stats { grid-template-columns: 1fr 1fr; }
   .stat-number { font-size: 38px; }
   .stat-item { padding: 24px 16px; }
